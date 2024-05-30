@@ -136,6 +136,7 @@ export const streamHandle = <
         responseStream = awslambda.HttpResponseStream.from(responseStream, httpResponseMetadata)
 
         if (res.body) {
+          console.log('Streaming response')
           await streamToNodeStream(res.body.getReader(), responseStream)
         } else {
           responseStream.write('')
